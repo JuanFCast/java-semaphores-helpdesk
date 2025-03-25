@@ -1,3 +1,15 @@
+// Proyecto MonitorDormilon - Clase Student
+// Sistemas Operativos - Integrantes: Juan Felipe Castillo Gomez, Juan Camilo Ramirez Tabares
+//
+// Esta clase implementa el comportamiento de un estudiante como un hilo que:
+//  - Alterna entre programar (durmiendo unos milisegundos aleatorios)
+//    y buscar ayuda del monitor.
+//  - Intenta sentarse en la cola de espera (sillas del corredor).
+//    Si no hay espacio, regresa a programar y vuelve más tarde.
+//  - Si encuentra espacio, despierta al monitor (si está dormido) y espera
+//    a ser atendido (sincronización con semáforos).
+
+
 package student;
 
 import monitor.Monitor;

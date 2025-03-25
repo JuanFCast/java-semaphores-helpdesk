@@ -1,3 +1,11 @@
+// Proyecto MonitorDormilon - Clase WaitingQueue
+// Sistemas Operativos - Integrantes: Juan Felipe Castillo Gomez, Juan Camilo Ramirez Tabares
+//
+// Esta clase representa la cola de espera (sillas en el corredor).
+// Su capacidad es de 3 sillas. Los estudiantes intentan sentarse aquí
+// mientras esperan al monitor. Si la cola está llena, se van y regresan más tarde.
+
+
 package util;
 
 import java.util.LinkedList;

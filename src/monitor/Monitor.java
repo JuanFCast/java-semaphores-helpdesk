@@ -1,3 +1,12 @@
+// Proyecto MonitorDormilon - Clase Monitor
+// Sistemas Operativos - Integrantes: Juan Felipe Castillo Gomez, Juan Camilo Ramirez Tabares
+//
+// Esta clase implementa al monitor como un hilo que:
+//  - Duerme cuando no hay estudiantes en el corredor (cola).
+//  - Despierta cuando llega un estudiante y lo notifica (semaforización).
+//  - Atiende a los estudiantes en orden FIFO, uno por vez.
+
+
 package monitor;
 
 import util.WaitingQueue;

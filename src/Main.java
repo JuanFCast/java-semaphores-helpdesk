@@ -1,3 +1,10 @@
+// Proyecto MonitorDormilon - Clase Main
+// Sistemas Operativos - Integrantes: Juan Felipe Castillo Gomez, Juan Camilo Ramirez Tabares
+//
+// Esta clase contiene el método main, que inicia la ejecución del programa,
+// creando y lanzando un hilo para el monitor y varios hilos para los estudiantes.
+
+
 public class Main {
     public static void main(String[] args) {
         int numberOfStudents = 5; // Se puede cambiar este número de estudiantes
