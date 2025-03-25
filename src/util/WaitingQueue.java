@@ -10,16 +10,18 @@ public class WaitingQueue {
     public synchronized boolean tryToSit(int studentId) {
         if (queue.size() < capacity) {
             queue.add(studentId);
-            System.out.println("Student " + studentId + " sat in the hallway. Chairs occupied: " + queue.size());
+            System.out.println("Estudiante " + studentId
+                    + " se sentó en el corredor. Sillas ocupadas: " + queue.size());
             return true;
         } else {
-            System.out.println("No chairs available. Student " + studentId + " cannot wait.");
+            System.out.println("No hay sillas disponibles. "
+                    + "El estudiante " + studentId + " no puede esperar.");
             return false;
         }
     }
 
     public synchronized Integer nextStudent() {
-        return queue.poll();
+        return queue.poll(); // Siguiente en la cola (orden de llegada)
     }
 
     public synchronized boolean isEmpty() {

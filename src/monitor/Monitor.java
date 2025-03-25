@@ -1,10 +1,10 @@
 package monitor;
 
 import util.WaitingQueue;
-
 import java.util.concurrent.Semaphore;
 
 public class Monitor extends Thread {
+    // Semáforos globales
     public static final Semaphore monitorReady = new Semaphore(0);
     public static final Semaphore studentReady = new Semaphore(0);
     public static final Semaphore accessSeats = new Semaphore(1);
@@ -15,21 +15,30 @@ public class Monitor extends Thread {
     public void run() {
         while (true) {
             try {
-                // Espera a que un estudiante lo despierte
+                // Muestra que el monitor duerme siempre antes de "acquire()"
+                System.out.println("El monitor no ve estudiantes en el corredor y se dispone a dormir...");
+
+                // Se bloquea hasta que un estudiante lo despierte con 'studentReady.release()'
                 studentReady.acquire();
 
+                // Se despierta y revisa la cola
+                System.out.println("El monitor se despierta y revisa el corredor para atender al siguiente estudiante...");
+
+                // Accede a las sillas (cola) de forma exclusiva
                 accessSeats.acquire();
                 Integer studentId = waitingQueue.nextStudent();
                 accessSeats.release();
 
                 if (studentId != null) {
-                    System.out.println("Monitor is helping student " + studentId);
-                    monitorReady.release(); // Listo para ayudar
+                    System.out.println("El monitor atiende al estudiante " + studentId);
+
+                    // Permiso al estudiante para que sepa que comenzó la atención
+                    monitorReady.release();
 
                     // Simula el tiempo de ayuda
                     Thread.sleep((int) (Math.random() * 3000) + 1000);
 
-                    System.out.println("Monitor finished helping student " + studentId);
+                    System.out.println("El monitor terminó de ayudar al estudiante " + studentId);
                 }
 
             } catch (InterruptedException e) {
